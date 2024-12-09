@@ -7,7 +7,7 @@ function Main() {
   const { openModal, closeModal, isModalOpen } = useContext(ModalContext);
 
   return (
-    <div>
+    <div className="flex-1">
       Main
       <button onClick={() => openModal("test")}>Open Test Modal</button>
       {isModalOpen("test") && (

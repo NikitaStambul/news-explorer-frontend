@@ -3,6 +3,18 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      container: {
+        center: true,
+        padding: {
+          DEFAULT: "16px",
+          md: "40px",
+          lg: "104px",
+        },
+      },
+      screens: {
+        md: "768px",
+        lg: "1440px",
+      },
       animation: {
         spin: "spin 0.75s linear infinite",
       },
@@ -10,6 +22,11 @@ export default {
         spin: {
           "100%": { transform: "rotate(360deg)" },
         },
+      },
+      fontFamily: {
+        inter: ["Inter", "sans-serif"],
+        roboto: ["Roboto", "sans-serif"],
+        robotoSlab: ["Roboto Slab", "serif"],
       },
       colors: {
         text: {
