@@ -46,24 +46,27 @@ const BaseModal: React.FC<BaseModalProps> = ({
   return createPortal(
     <div
       className={classNames(
-        "overlay fixed inset-0 flex justify-center items-center bg-black/30 p-6 transition-opacity duration-300 ease-in-out",
+        "overlay pt-14 md:pt-0 height-dvh fixed inset-0 flex md:items-center md:justify-center bg-black/30 transition-opacity duration-300 ease-in-out",
         { "opacity-1": isVisible, "opacity-0": !isVisible }
       )}
       onClick={handleOverlayClick}
     >
       <div
         className={classNames(
-          "relative bg-white rounded-2xl w-full max-w-lg transform transition-transform duration-300 ease-in-out",
-          { "scale-100": isVisible, "scale-90": !isVisible },
+          "relative p-4 md:p-9 md:top-auto rounded-t-xl md:rounded-2xl w-full height-full md:max-w-lg bg-white transition-transform duration-300 ease-in-out",
+          {
+            "translate-y-0 md:scale-100": isVisible,
+            "translate-y-24 md:translate-y-0 md:scale-90": !isVisible,
+          },
           className
         )}
       >
         {children}
         <button
-          className="absolute -top-12 -right-12 bg-transparent w-10 h-10 border-none cursor-pointer transition-opacity duration-300 opacity-70 hover:opacity-100 bg-center bg-no-repeat"
+          className="absolute -top-10 md:-top-12 right-4 md:-right-12 bg-transparent w-6 h-6 md:w-10 md:h-10 border-none cursor-pointer dark"
           onClick={handleClose}
         >
-          <Icons.close />
+          <Icons.close className="w-6 h-6" />
         </button>
       </div>
     </div>,

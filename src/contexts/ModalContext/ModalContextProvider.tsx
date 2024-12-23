@@ -1,28 +1,30 @@
-import { ReactNode, useState } from "react";
-import ModalContext from "./ModalContext";
+import { useCallback, useState } from "react";
+import { ModalContext, ModalType } from "./ModalContext";
 
-type ModalProviderProps = {
-  children: ReactNode;
-};
+const ModalProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
+  const [currentModal, setCurrentModal] = useState<ModalType>(null);
 
-function ModalProvider({ children }: ModalProviderProps): JSX.Element {
-  const [modals, setModals] = useState<Record<string, boolean>>({});
+  const openModal = useCallback((modalType: ModalType) => {
+    setCurrentModal(modalType);
+  }, []);
 
-  const openModal = (modalId: string) => {
-    setModals((prev) => ({ ...prev, [modalId]: true }));
-  };
-
-  const closeModal = (modalId: string) => {
-    setModals((prev) => ({ ...prev, [modalId]: false }));
-  };
-
-  const isModalOpen = (modalId: string) => !!modals[modalId];
+  const closeModal = useCallback(() => {
+    setCurrentModal(null);
+  }, []);
 
   return (
-    <ModalContext.Provider value={{ openModal, closeModal, isModalOpen }}>
+    <ModalContext.Provider
+      value={{
+        currentModal,
+        openModal,
+        closeModal,
+      }}
+    >
       {children}
     </ModalContext.Provider>
   );
-}
+};
 
 export default ModalProvider;

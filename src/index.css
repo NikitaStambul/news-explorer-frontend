@@ -3,13 +3,9 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-  font-family: "Roboto", sans-serif;
-  font-weight: 500;
-  color: #1A1B22;
-}
-
 #root {
+  font-family: "Roboto", sans-serif;
+  color: #1A1B22;
   min-height: 100dvh;
   display: flex;
   flex-direction: column;
