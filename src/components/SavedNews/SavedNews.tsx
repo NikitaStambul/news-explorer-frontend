@@ -3,11 +3,11 @@ import SavedNewsHeader from "../SavedNewsHeader/SavedNewsHeader";
 
 function SavedNews() {
   return (
-    <div className="">
+    <div className="flex-1 flex flex-col">
       <SavedNewsHeader />
-      <div className="bg-background">
+      <div className="bg-background flex-1">
         <div className="container py-6 md:py-8 xl:py-15">
-          <NewsCardList />
+          <NewsCardList articles={[]} />
         </div>
       </div>
     </div>

@@ -34,6 +34,9 @@ export default {
         "header-gray": "0px -1px 0px 0px #D1D2D6 inset",
         submit: "0 5px 15px 0 #0E1A3933",
       },
+      backgroundImage: {
+        'loader-gradient': 'conic-gradient(#D1D2D600, #1A1B22)',
+      },
       colors: {
         text: {
           DEFAULT: "#1A1B22",

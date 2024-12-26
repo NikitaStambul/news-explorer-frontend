@@ -3,19 +3,22 @@ import { useContext } from "react";
 import useFormValidation from "#/hooks/useFormValidation";
 import { ModalContext } from "#/contexts/ModalContext/ModalContext";
 import FormInput from "../ModalWithForm/FormInput";
+import { UserContext } from "#/contexts/UserContext/UserContext";
+import { SignInData } from "#/types/auth";
 
 function SignInModal() {
   const { openModal, closeModal } = useContext(ModalContext);
-  const { formData, errors, handleInputChange, handleBlur } = useFormValidation(
-    {
+  const { signIn } = useContext(UserContext);
+  const { formData, errors, handleInputChange, handleBlur } =
+    useFormValidation<SignInData>({
       email: "",
       password: "",
-    }
-  );
+    });
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Add sign-in logic here
+
+    signIn(formData);
   };
 
   return (

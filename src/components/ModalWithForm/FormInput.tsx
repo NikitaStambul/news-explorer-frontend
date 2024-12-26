@@ -1,9 +1,8 @@
-import classNames from "classnames";
-import React from "react";
+import { cn } from "#/utils/cn";
 
 interface FormInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   value: string;
-  error: string;
+  error?: string;
   valueTitle: string;
 }
 
@@ -15,7 +14,7 @@ function FormInput({
 }: FormInputProps) {
   return (
     <label
-      className={classNames(
+      className={cn(
         "text-button flex flex-col font-normal border-b-[1px] cursor-pointer",
         {
           "border-red-500": error,
@@ -26,7 +25,7 @@ function FormInput({
       {valueTitle[0].toUpperCase() + valueTitle.slice(1)}
       {error && <span className="text-red-500">{`(${error})`}</span>}
       <input
-        className={classNames("text-text py-[10px]", {
+        className={cn("text-text py-[10px]", {
           "text-red-500": error,
         })}
         type={valueTitle}

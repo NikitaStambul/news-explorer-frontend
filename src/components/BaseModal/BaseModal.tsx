@@ -1,7 +1,7 @@
 import React, { useEffect, useState, MouseEvent } from "react";
 import { createPortal } from "react-dom";
-import classNames from "classnames";
 import Icons from "../Icons";
+import { cn } from "#/utils/cn";
 
 interface BaseModalProps {
   onClose: () => void;
@@ -45,14 +45,14 @@ const BaseModal: React.FC<BaseModalProps> = ({
 
   return createPortal(
     <div
-      className={classNames(
+      className={cn(
         "overlay pt-14 md:pt-0 height-dvh fixed inset-0 flex md:items-center md:justify-center bg-black/30 transition-opacity duration-300 ease-in-out",
         { "opacity-1": isVisible, "opacity-0": !isVisible }
       )}
       onClick={handleOverlayClick}
     >
       <div
-        className={classNames(
+        className={cn(
           "relative p-4 md:p-9 md:top-auto rounded-t-xl md:rounded-2xl w-full height-full md:max-w-lg bg-white transition-transform duration-300 ease-in-out",
           {
             "translate-y-0 md:scale-100": isVisible,

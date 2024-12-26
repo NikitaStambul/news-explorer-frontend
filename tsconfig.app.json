@@ -29,6 +29,8 @@
       "vendor/*": ["src/vendor/*"],
       "hooks/*": ["src/hooks/*"],
       "contexts/*": ["src/contexts/*"],
+      "utils/*": ["src/utils/*"],
+      "types/*": ["src/types/*"]
     }
   },
   "include": ["src"]

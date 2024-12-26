@@ -1,13 +1,10 @@
 import { useState, ChangeEvent, FocusEvent } from "react";
 
-type FormValues = { [key: string]: string };
-type FormErrors = { [key: string]: string };
+type FormErrors<T> = Partial<Record<keyof T, string>>;
 
-function useFormValidation(initialValues: FormValues) {
-  const [formData, setFormData] = useState<FormValues>(initialValues);
-  const [errors, setErrors] = useState<FormErrors>(
-    Object.keys(initialValues).reduce((acc, key) => ({ ...acc, [key]: "" }), {})
-  );
+function useFormValidation<T extends Record<string, any>>(initialValues: T) {
+  const [formData, setFormData] = useState<T>(initialValues);
+  const [errors, setErrors] = useState<FormErrors<T>>({});
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -26,7 +23,8 @@ function useFormValidation(initialValues: FormValues) {
     }
   };
 
-  const handleBlur = (e: FocusEvent<HTMLInputElement>) => validateField(e.target);
+  const handleBlur = (e: FocusEvent<HTMLInputElement>) =>
+    validateField(e.target);
 
   return {
     formData,

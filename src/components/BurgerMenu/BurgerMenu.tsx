@@ -2,9 +2,9 @@ import { Link } from "react-router-dom";
 import { MouseEvent, useContext, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import Icons from "../Icons";
-import classNames from "classnames";
 import OutlinedBtn from "../OutlinedBtn/OutlinedBtn";
 import { ModalContext } from "#/contexts/ModalContext/ModalContext";
+import { cn } from "#/utils/cn";
 
 interface BurgerMenuProps {
   onClose: () => void;
@@ -47,14 +47,14 @@ function BurgerMenu({ onClose }: BurgerMenuProps) {
 
   return createPortal(
     <div
-      className={classNames(
+      className={cn(
         "overlay fixed inset-0 bg-black/30 md:hidden transition-opacity duration-300",
         { "opacity-0": !isVisible, "opacity-100": isVisible }
       )}
       onClick={handleOverlayClick}
     >
       <div
-        className={classNames(
+        className={cn(
           "w-full bg-white py-4 dark:bg-background-dark transition-transform duration-300",
           { "-translate-y-40": !isVisible, "translate-y-0": isVisible }
         )}

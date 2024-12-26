@@ -5,8 +5,13 @@ import Main from "../Main/Main";
 import ModalsRenderer from "../ModalsRenderer/ModalsRenderer";
 import Header from "../Header/Header";
 import SearchForm from "../SearchForm/SearchForm";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
+import { useContext } from "react";
+import { UserContext } from "#/contexts/UserContext/UserContext";
 
 function App() {
+  const { user, userIsLoading } = useContext(UserContext);
+
   return (
     <div className="flex flex-col min-h-dvh">
       <Routes>
@@ -23,15 +28,17 @@ function App() {
             </>
           }
         />
-        <Route
-          path="/saved-news"
-          element={
-            <>
-              <Header />
-              <SavedNews />
-            </>
-          }
-        />
+        {!userIsLoading && (
+          <Route
+            path="/saved-news"
+            element={
+              <ProtectedRoute isLoggedIn={!!user}>
+                <Header />
+                <SavedNews />
+              </ProtectedRoute>
+            }
+          />
+        )}
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
       <Footer />

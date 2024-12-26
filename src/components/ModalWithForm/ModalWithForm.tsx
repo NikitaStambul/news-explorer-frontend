@@ -1,6 +1,6 @@
 import { FormEventHandler, useRef, useState } from "react";
 import BaseModal from "components/BaseModal/BaseModal";
-import classNames from "classnames";
+import { cn } from "#/utils/cn";
 
 interface ModalWithFormProps {
   onClose: () => void;
@@ -43,7 +43,7 @@ function ModalWithForm({
         {children}
         <div className="flex flex-col gap-4">
           <button
-            className={classNames(
+            className={cn(
               "w-full rounded-full text-text-contrast bg-button p-5 text-lg font-medium leading-6 cursor-pointer disabled:cursor-not-allowed disabled:bg-button-disabled disabled:text-text-muted",
               { "shadow-submit": isFormValid }
             )}

@@ -1,6 +1,21 @@
+import { SearchContext } from "#/contexts/SearchContext/SearchContext";
+import { useContext, useState } from "react";
+
 function SearchForm() {
+  const [query, setQuery] = useState("");
+  const { searchByQuery } = useContext(SearchContext);
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    searchByQuery(query);
+  };
+
   return (
-    <form className="container flex flex-col flex-1 justify-between text-text-contrast md:max-w-[440px] xl:max-w-[680px] py-8 md:py-10 xl:py-20 gap-12 xl:gap-20">
+    <form
+      onSubmit={handleSubmit}
+      className="container flex flex-col flex-1 justify-between text-text-contrast md:max-w-[440px] xl:max-w-[680px] py-8 md:py-10 xl:py-20 gap-12 xl:gap-20"
+    >
       <div className="flex flex-col gap-4 xl:gap-8">
         <h3 className="font-robotoSlab text-4xl">
           What's going on in the world?
@@ -13,6 +28,9 @@ function SearchForm() {
       <div className="relative flex flex-col gap-4">
         <input
           type="text"
+          name="query"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
           className="gap-4 md:flex-row py-4 px-4 lg:px-6 xl:py-5 md:pr-44 xl:pr-[200px] rounded-full text-text"
           placeholder="Enter keywords"
         />

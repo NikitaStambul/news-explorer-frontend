@@ -1,6 +1,6 @@
 function Preloader() {
   return (
-    <div className="w-12 h-12 border-4 border-gray-700 border-b-gray-500 rounded-full m-auto animate-spin"></div>
+    <div className="w-[74px] aspect-square bg-loader-gradient rounded-full mx-auto animate-spin [mask-image:radial-gradient(farthest-side,#0000_calc(100%-1px),#000_0)]" />
   );
 }
 
