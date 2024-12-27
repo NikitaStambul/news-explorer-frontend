@@ -16,7 +16,7 @@ class NewsApi {
   async getArticles(query: string = "apple"): Promise<Article[]> {
     const url = new URL(`${this._baseUrl}/everything`);
     url.searchParams.set("apiKey", this._APIkey);
-    url.searchParams.set("sortBy", "popularity");
+    url.searchParams.set("sortBy", "relevancy");
     url.searchParams.set("q", query);
 
     const fromDate = new Date();
