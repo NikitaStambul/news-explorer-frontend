@@ -54,9 +54,7 @@ function NewsCard({ article, page = "SEARCH" }: NewsCardProps) {
         {page == "SAVED" && (
           <Tooltip
             className="absolute top-4 right-4"
-            content={
-              userInfo.user ? "Save article" : "Sign in to save articles"
-            }
+            content={"Remove article"}
           >
             <RemoveBtn disabled={!userInfo.user} />
           </Tooltip>

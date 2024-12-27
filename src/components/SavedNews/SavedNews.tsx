@@ -1,3 +1,4 @@
+import { mockArticles } from "#/types/newsapi";
 import NewsCardList from "../NewsCardList/NewsCardList";
 import SavedNewsHeader from "../SavedNewsHeader/SavedNewsHeader";
 
@@ -7,7 +8,7 @@ function SavedNews() {
       <SavedNewsHeader />
       <div className="bg-background flex-1">
         <div className="container py-6 md:py-8 xl:py-15">
-          <NewsCardList articles={[]} page="SAVED" />
+          <NewsCardList articles={mockArticles} page="SAVED" />
         </div>
       </div>
     </div>
