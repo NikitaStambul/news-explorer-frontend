@@ -1,5 +1,5 @@
 import ModalWithForm from "components/ModalWithForm/ModalWithForm";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import useFormValidation from "#/hooks/useFormValidation";
 import { ModalContext } from "#/contexts/ModalContext/ModalContext";
 import FormInput from "../ModalWithForm/FormInput";
@@ -7,6 +7,7 @@ import { UserContext } from "#/contexts/UserContext/UserContext";
 import { SignInData } from "#/types/auth";
 
 function SignInModal() {
+  const [formError, setFormError] = useState("");
   const { openModal, closeModal } = useContext(ModalContext);
   const { signIn } = useContext(UserContext);
   const { formData, errors, handleInputChange, handleBlur } =
@@ -15,16 +16,23 @@ function SignInModal() {
       password: "",
     });
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    signIn(formData);
+    try {
+      await signIn(formData);
+      closeModal();
+    } catch (err: unknown) {
+      const error = err as Error;
+      setFormError(error.message);
+    }
   };
 
   return (
     <ModalWithForm
       title="Sign In"
       submitBtnText="Sign In"
+      formErrorMessage={formError}
       onClose={closeModal}
       onSubmit={handleSubmit}
       altBtnEl={

@@ -1,11 +1,10 @@
 import { cn } from "#/utils/cn";
-import { useState } from "react";
+import { ButtonHTMLAttributes, useState } from "react";
 
-interface BookmarkBtnProps {
-  className?: string;
-}
-
-function BookmarkBtn({ className }: BookmarkBtnProps) {
+function BookmarkBtn({
+  className,
+  ...rest
+}: ButtonHTMLAttributes<HTMLButtonElement>) {
   const [isBookmarked, setIsBookmarked] = useState(false);
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -18,6 +17,7 @@ function BookmarkBtn({ className }: BookmarkBtnProps) {
       onClick={handleClick}
       className={cn("group", className)}
       aria-label="Toggle bookmark"
+      {...rest}
     >
       <svg
         width="40"

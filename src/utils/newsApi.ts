@@ -39,6 +39,7 @@ class NewsApi {
     if (!res.ok) {
       return Promise.reject(new Error(`Error: ${res.status}`));
     }
+
     return res.json();
   }
 }

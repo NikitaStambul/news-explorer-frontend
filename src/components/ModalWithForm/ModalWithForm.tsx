@@ -5,6 +5,7 @@ import { cn } from "#/utils/cn";
 interface ModalWithFormProps {
   onClose: () => void;
   onSubmit: FormEventHandler<HTMLFormElement>;
+  formErrorMessage: string;
   children: React.ReactNode;
   title?: string;
   submitBtnText?: string;
@@ -14,6 +15,7 @@ interface ModalWithFormProps {
 function ModalWithForm({
   onClose,
   onSubmit,
+  formErrorMessage,
   children,
   title = "Form",
   submitBtnText = "Submit",
@@ -42,6 +44,11 @@ function ModalWithForm({
       >
         {children}
         <div className="flex flex-col gap-4">
+          {formErrorMessage && (
+            <p className="font-inter text-xs text-red-500 text-center">
+              {formErrorMessage}
+            </p>
+          )}
           <button
             className={cn(
               "w-full rounded-full text-text-contrast bg-button p-5 text-lg font-medium leading-6 cursor-pointer disabled:cursor-not-allowed disabled:bg-button-disabled disabled:text-text-muted",

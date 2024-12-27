@@ -2,12 +2,18 @@ import placeholderImg from "assets/placeholder.jpg";
 import BookmarkBtn from "../BookmarkBtn/BookmarkBtn";
 import Tooltip from "../Tooltip/Tooltip";
 import { Article } from "#/types/newsapi";
+import { useContext } from "react";
+import { UserContext } from "#/contexts/UserContext/UserContext";
+import RemoveBtn from "../RemoveBtn/RemoveBtn";
 
 interface NewsCardProps {
   article: Article;
+  page: "SEARCH" | "SAVED";
 }
 
-function NewsCard({ article }: NewsCardProps) {
+function NewsCard({ article, page = "SEARCH" }: NewsCardProps) {
+  const { userInfo } = useContext(UserContext);
+
   return (
     <a href={article.url} target="_blank">
       <li className="relative flex flex-col rounded-xl overflow-hidden bg-background-light">
@@ -35,12 +41,26 @@ function NewsCard({ article }: NewsCardProps) {
             {article.source.name}
           </p>
         </div>
-        <Tooltip
-          className="absolute top-4 right-4"
-          content="Sign in to save articles"
-        >
-          <BookmarkBtn />
-        </Tooltip>
+        {page == "SEARCH" && (
+          <Tooltip
+            className="absolute top-4 right-4"
+            content={
+              userInfo.user ? "Save article" : "Sign in to save articles"
+            }
+          >
+            <BookmarkBtn disabled={!userInfo.user} />
+          </Tooltip>
+        )}
+        {page == "SAVED" && (
+          <Tooltip
+            className="absolute top-4 right-4"
+            content={
+              userInfo.user ? "Save article" : "Sign in to save articles"
+            }
+          >
+            <RemoveBtn disabled={!userInfo.user} />
+          </Tooltip>
+        )}
       </li>
     </a>
   );

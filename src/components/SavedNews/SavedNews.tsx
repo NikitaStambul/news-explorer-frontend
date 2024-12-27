@@ -7,7 +7,7 @@ function SavedNews() {
       <SavedNewsHeader />
       <div className="bg-background flex-1">
         <div className="container py-6 md:py-8 xl:py-15">
-          <NewsCardList articles={[]} />
+          <NewsCardList articles={[]} page="SAVED" />
         </div>
       </div>
     </div>

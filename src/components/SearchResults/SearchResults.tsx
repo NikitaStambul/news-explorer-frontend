@@ -15,7 +15,10 @@ function SearchResults({ articles }: SearchResultsProps) {
         <h3 className="font-robotoSlab font-normal text-[30px] leading-[34px] text-start w-full">
           Search results
         </h3>
-        <NewsCardList articles={articles.slice(0, articlesShown)} />
+        <NewsCardList
+          articles={articles.slice(0, articlesShown)}
+          page="SEARCH"
+        />
         {articlesShown < articles.length && (
           <button
             onClick={() => setArticlesShown((count) => count + 3)}

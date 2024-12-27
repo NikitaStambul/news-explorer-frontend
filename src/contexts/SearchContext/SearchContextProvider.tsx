@@ -18,18 +18,22 @@ const SearchContextProvider: React.FC<{ children: React.ReactNode }> = ({
     error: null,
   });
 
-  const searchByQuery = useCallback((query: string) => {
+  const searchByQuery = useCallback(async (query: string) => {
     setState((state) => ({ ...state, isLoading: true }));
-    newsApi
-      .getArticles(query)
-      .then((articles) =>
-        setState((state) => ({
-          ...state,
-          articles: filterArticles(articles),
-        }))
-      )
-      .catch((err) => setState((state) => ({ ...state, error: err })))
-      .finally(() => setState((state) => ({ ...state, isLoading: false })));
+
+    try {
+      const articles = await newsApi.getArticles(query);
+      setState((state) => ({
+        ...state,
+        articles: filterArticles(articles),
+      }));
+    } catch (err: unknown) {
+      const error =
+        err instanceof Error ? err : new Error("An unknown error occurred");
+      setState((state) => ({ ...state, error }));
+    } finally {
+      setState((state) => ({ ...state, isLoading: false }));
+    }
   }, []);
 
   return (

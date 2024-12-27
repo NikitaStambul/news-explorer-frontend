@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { MouseEvent, useContext, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import Icons from "../Icons";
@@ -11,6 +11,7 @@ interface BurgerMenuProps {
 }
 
 function BurgerMenu({ onClose }: BurgerMenuProps) {
+  const { pathname } = useLocation();
   const [isVisible, setIsVisible] = useState(false);
   const { openModal } = useContext(ModalContext);
 
@@ -49,21 +50,28 @@ function BurgerMenu({ onClose }: BurgerMenuProps) {
     <div
       className={cn(
         "overlay fixed inset-0 bg-black/30 md:hidden transition-opacity duration-300",
-        { "opacity-0": !isVisible, "opacity-100": isVisible }
+        {
+          "opacity-0": !isVisible,
+          "opacity-100": isVisible,
+          dark: pathname == "/",
+        }
       )}
       onClick={handleOverlayClick}
     >
       <div
         className={cn(
           "w-full bg-white py-4 dark:bg-background-dark transition-transform duration-300",
-          { "-translate-y-40": !isVisible, "translate-y-0": isVisible }
+          {
+            "-translate-y-40": !isVisible,
+            "translate-y-0": isVisible,
+          }
         )}
       >
-        <div className="flex flex-col container bg-white gap-5 ">
+        <div className="flex flex-col container gap-5 dark:text-text-contrast">
           <div className="flex justify-between">
             <Link
               to="/"
-              className="font-robotoSlab text-[20px] font-bold leading-[24px] h-full flex items-center dark:text-text-contrast"
+              className="font-robotoSlab text-[20px] font-bold leading-[24px] h-full flex items-center"
             >
               NewsExplorer
             </Link>
@@ -81,7 +89,7 @@ function BurgerMenu({ onClose }: BurgerMenuProps) {
           >
             Saved articles
           </Link>
-          <OutlinedBtn className="ml-8" onClick={() => openModal("SIGNIN")}>
+          <OutlinedBtn className="md:ml-8" onClick={() => openModal("SIGNIN")}>
             Sign In
           </OutlinedBtn>
         </div>

@@ -1,17 +1,23 @@
 import { SignInData, SignUpData, User } from "#/types/auth";
 import { createContext } from "react";
 
-interface UserContextValue {
+export interface UserInfo {
   user: User | null;
   userIsLoading: boolean;
+}
+
+interface UserContextValue {
+  userInfo: UserInfo;
   signIn: (data: SignInData) => Promise<void>;
   signUp: (data: SignUpData) => Promise<void>;
   signOut: () => void;
 }
 
 export const UserContext = createContext<UserContextValue>({
-  user: null,
-  userIsLoading: true,
+  userInfo: {
+    user: null,
+    userIsLoading: false,
+  },
   signIn: async () => {},
   signUp: async () => {},
   signOut: () => {},

@@ -7,7 +7,7 @@ import { ModalContext } from "#/contexts/ModalContext/ModalContext";
 import { UserContext } from "#/contexts/UserContext/UserContext";
 
 function Navigation() {
-  const { user, signOut } = useContext(UserContext);
+  const { userInfo, signOut } = useContext(UserContext);
   const { openModal } = useContext(ModalContext);
   const [menuIsOnened, setMenuIsOnened] = useState(false);
 
@@ -23,13 +23,15 @@ function Navigation() {
     <nav className="flex h-full items-center">
       <div className="hidden md:flex h-full items-center">
         <NavigationLink to="/">Home</NavigationLink>
-        <NavigationLink to="/saved-news">Saved articles</NavigationLink>
-        {user ? (
+        {userInfo.user && (
+          <NavigationLink to="/saved-news">Saved articles</NavigationLink>
+        )}
+        {userInfo.user ? (
           <OutlinedBtn
             className="ml-8 flex items-center gap-3"
             onClick={signOut}
           >
-            {user.name}
+            {userInfo.user.name}
             <Icons.signOut className="w-6 h-6" />
           </OutlinedBtn>
         ) : (

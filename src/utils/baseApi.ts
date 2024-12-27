@@ -5,15 +5,20 @@ class BaseApi {
     this._baseUrl = import.meta.env.VITE_BACKEND_URL;
   }
 
-  private _checkResponse<T>(res: Response): Promise<T> {
-    return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
+  private async _checkResponse<T>(res: Response): Promise<T> {
+    if (res.ok) {
+      return res.json();
+    }
+
+    const errorData = await res.json().catch((err) => console.error(err));
+    const errorMessage = errorData?.message || `Error: ${res.status}`;
+    return Promise.reject(new Error(errorMessage));
   }
 
   protected _authorizedRequest<T>(
     url: string,
     options: RequestInit = {}
   ): Promise<T> {
-    options.headers = options.headers || {};
     const token = localStorage.getItem("jwt");
 
     if (!token) {
@@ -22,15 +27,16 @@ class BaseApi {
       );
     }
 
-    options.headers.Authorization = `Bearer ${token}`;
+    const headers = new Headers(options.headers);
+    headers.set("Authorization", `Bearer ${token}`);
+    options.headers = headers;
 
     return this._request<T>(url, options);
   }
 
-  protected _request<T>(url: string, options?: RequestInit): Promise<T> {
-    return fetch(`${this._baseUrl}${url}`, options).then((res) =>
-      this._checkResponse<T>(res)
-    );
+  protected async _request<T>(url: string, options?: RequestInit): Promise<T> {
+    const response = await fetch(`${this._baseUrl}${url}`, options);
+    return this._checkResponse<T>(response);
   }
 }
 

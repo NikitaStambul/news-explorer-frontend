@@ -1,28 +1,32 @@
 import { useEffect, useState } from "react";
-import { UserContext } from "./UserContext";
+import { UserContext, UserInfo } from "./UserContext";
 import authApi from "#/utils/authApi";
-import { SignInData, SignUpData, User } from "#/types/auth";
+import { SignInData, SignUpData } from "#/types/auth";
 
 const UserProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [user, setUser] = useState<User | null>(null);
-  const [userIsLoading, setUserIsLoading] = useState(true);
+  const [userInfo, setUserInfo] = useState<UserInfo>({
+    user: null,
+    userIsLoading: true,
+  });
+
+  const setLoading = (value: boolean) => {
+    setUserInfo((info) => ({ ...info, userIsLoading: value }));
+  };
 
   const getCurrentUser = async () => {
-    setUserIsLoading(true);
-
-    return authApi
-      .getMyInfo()
-      .then(setUser)
-      .catch(console.error)
-      .finally(() => {
-        setUserIsLoading(false);
-      });
+    try {
+      const user = await authApi.getMyInfo();
+      setUserInfo((info) => ({ ...info, user }));
+    } catch (error: unknown) {
+      console.error("Failed to fetch user info:", error);
+    }
   };
 
   const signIn = async (data: SignInData) => {
-    return authApi.signIn(data).then(getCurrentUser).catch(console.error);
+    await authApi.signIn(data);
+    await getCurrentUser();
   };
 
   const signUp = async (data: SignUpData) => {
@@ -30,19 +34,24 @@ const UserProvider: React.FC<{ children: React.ReactNode }> = ({
   };
 
   const signOut = () => {
-    setUser(null);
+    setUserInfo({ user: null, userIsLoading: false });
     localStorage.removeItem("jwt");
   };
 
   useEffect(() => {
-    getCurrentUser();
+    setLoading(true);
+
+    if (localStorage.getItem("jwt")) {
+      getCurrentUser().finally(() => setLoading(false));
+    } else {
+      setLoading(false);
+    }
   }, []);
 
   return (
     <UserContext.Provider
       value={{
-        user,
-        userIsLoading,
+        userInfo,
         signIn,
         signUp,
         signOut,
