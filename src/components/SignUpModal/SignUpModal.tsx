@@ -1,11 +1,14 @@
 import ModalWithForm from "components/ModalWithForm/ModalWithForm";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import useFormValidation from "#/hooks/useFormValidation";
 import { ModalContext } from "#/contexts/ModalContext/ModalContext";
 import FormInput from "../ModalWithForm/FormInput";
+import { UserContext } from "#/contexts/UserContext/UserContext";
 
 function SignUpModal() {
+  const [formError, setFormError] = useState("");
   const { openModal, closeModal } = useContext(ModalContext);
+  const { signUp } = useContext(UserContext);
   const { formData, errors, handleInputChange, handleBlur } = useFormValidation(
     {
       email: "",
@@ -14,15 +17,23 @@ function SignUpModal() {
     }
   );
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Add sign-in logic here
+
+    try {
+      await signUp(formData);
+      closeModal();
+    } catch (err: unknown) {
+      const error = err as Error;
+      setFormError(error.message);
+    }
   };
 
   return (
     <ModalWithForm
-      title="Sign In"
-      submitBtnText="Sign In"
+      title="Sign Up"
+      submitBtnText="Sign Up"
+      formErrorMessage={formError}
       onClose={closeModal}
       onSubmit={handleSubmit}
       altBtnEl={

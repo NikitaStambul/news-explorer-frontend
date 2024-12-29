@@ -6,7 +6,6 @@ export interface User {
 
 export interface SignUpData {
   name: string;
-  avatar: string;
   email: string;
   password: string;
 }

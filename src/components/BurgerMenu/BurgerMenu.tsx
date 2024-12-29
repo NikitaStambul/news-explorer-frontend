@@ -5,12 +5,14 @@ import Icons from "../Icons";
 import OutlinedBtn from "../OutlinedBtn/OutlinedBtn";
 import { ModalContext } from "#/contexts/ModalContext/ModalContext";
 import { cn } from "#/utils/cn";
+import { UserContext } from "#/contexts/UserContext/UserContext";
 
 interface BurgerMenuProps {
   onClose: () => void;
 }
 
 function BurgerMenu({ onClose }: BurgerMenuProps) {
+  const { userInfo, signOut } = useContext(UserContext);
   const { pathname } = useLocation();
   const [isVisible, setIsVisible] = useState(false);
   const { openModal } = useContext(ModalContext);
@@ -82,16 +84,31 @@ function BurgerMenu({ onClose }: BurgerMenuProps) {
           <Link to="/" className="leading-[56px]" onClick={handleLinkClick}>
             Home
           </Link>
-          <Link
-            to="/saved-news"
-            className="leading-[56px]"
-            onClick={handleLinkClick}
-          >
-            Saved articles
-          </Link>
-          <OutlinedBtn className="md:ml-8" onClick={() => openModal("SIGNIN")}>
-            Sign In
-          </OutlinedBtn>
+          {userInfo.user && (
+            <Link
+              to="/saved-news"
+              className="leading-[56px]"
+              onClick={handleLinkClick}
+            >
+              Saved articles
+            </Link>
+          )}
+          {userInfo.user ? (
+            <OutlinedBtn
+              className="md:ml-8 flex justify-center items-center gap-3"
+              onClick={signOut}
+            >
+              {userInfo.user.name}
+              <Icons.signOut className="w-6 h-6" />
+            </OutlinedBtn>
+          ) : (
+            <OutlinedBtn
+              className="md:ml-8 px-10 flex justify-center items-center"
+              onClick={() => openModal("SIGNIN")}
+            >
+              Sign In
+            </OutlinedBtn>
+          )}
         </div>
       </div>
     </div>,
