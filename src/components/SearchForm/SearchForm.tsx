@@ -1,4 +1,4 @@
-import { SearchContext } from "#/contexts/SearchContext/SearchContext";
+import { SearchContext } from "contexts/SearchContext/SearchContext";
 import { useContext, useState } from "react";
 
 function SearchForm() {

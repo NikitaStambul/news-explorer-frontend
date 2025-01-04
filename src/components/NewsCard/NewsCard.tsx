@@ -1,10 +1,10 @@
 import placeholderImg from "assets/placeholder.jpg";
-import BookmarkBtn from "../BookmarkBtn/BookmarkBtn";
-import Tooltip from "../Tooltip/Tooltip";
-import { Article } from "#/types/newsapi";
+import BookmarkBtn from "components/BookmarkBtn/BookmarkBtn";
+import Tooltip from "components/Tooltip/Tooltip";
+import { Article } from "types/newsapi";
 import { useContext } from "react";
-import { UserContext } from "#/contexts/UserContext/UserContext";
-import RemoveBtn from "../RemoveBtn/RemoveBtn";
+import { UserContext } from "contexts/UserContext/UserContext";
+import RemoveBtn from "components/RemoveBtn/RemoveBtn";
 
 interface NewsCardProps {
   article: Article;

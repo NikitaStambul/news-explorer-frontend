@@ -1,4 +1,4 @@
-import { SignInData, SignUpData, User } from "#/types/auth";
+import { SignInData, SignUpData, User } from "types/auth";
 import { createContext } from "react";
 
 export interface UserInfo {

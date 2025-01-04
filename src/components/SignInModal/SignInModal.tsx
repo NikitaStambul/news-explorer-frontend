@@ -1,10 +1,10 @@
 import ModalWithForm from "components/ModalWithForm/ModalWithForm";
 import { useContext, useState } from "react";
-import useFormValidation from "#/hooks/useFormValidation";
-import { ModalContext } from "#/contexts/ModalContext/ModalContext";
-import FormInput from "../ModalWithForm/FormInput";
-import { UserContext } from "#/contexts/UserContext/UserContext";
-import { SignInData } from "#/types/auth";
+import useFormValidation from "hooks/useFormValidation";
+import { ModalContext } from "contexts/ModalContext/ModalContext";
+import FormInput from "components/ModalWithForm/FormInput";
+import { UserContext } from "contexts/UserContext/UserContext";
+import { SignInData } from "types/auth";
 
 function SignInModal() {
   const [formError, setFormError] = useState("");

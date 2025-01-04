@@ -1,5 +1,5 @@
 import { ReactNode, useState } from "react";
-import { cn } from "#/utils/cn";
+import { cn } from "utils/cn";
 
 interface TooltipProps {
   content: ReactNode;

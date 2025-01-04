@@ -4,7 +4,7 @@ import {
   SignInData,
   SignUpData,
   User,
-} from "#/types/auth";
+} from "types/auth";
 import BaseApi from "./baseApi";
 
 class AuthApi extends BaseApi {

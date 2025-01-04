@@ -1,6 +1,6 @@
-import { Article } from "#/types/newsapi";
+import { Article } from "types/newsapi";
 import { useState } from "react";
-import NewsCardList from "../NewsCardList/NewsCardList";
+import NewsCardList from "components/NewsCardList/NewsCardList";
 
 interface SearchResultsProps {
   articles: Article[];

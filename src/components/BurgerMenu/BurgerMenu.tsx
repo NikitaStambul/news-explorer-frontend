@@ -1,11 +1,11 @@
 import { Link, useLocation } from "react-router-dom";
 import { MouseEvent, useContext, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
-import Icons from "../Icons";
-import OutlinedBtn from "../OutlinedBtn/OutlinedBtn";
-import { ModalContext } from "#/contexts/ModalContext/ModalContext";
-import { cn } from "#/utils/cn";
-import { UserContext } from "#/contexts/UserContext/UserContext";
+import { ModalContext } from "contexts/ModalContext/ModalContext";
+import { UserContext } from "contexts/UserContext/UserContext";
+import Icons from "components/Icons";
+import OutlinedBtn from "components/OutlinedBtn/OutlinedBtn";
+import { cn } from "utils/cn";
 
 interface BurgerMenuProps {
   onClose: () => void;

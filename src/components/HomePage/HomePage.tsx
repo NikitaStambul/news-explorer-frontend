@@ -1,6 +1,6 @@
-import Header from "../Header/Header";
-import Main from "../Main/Main";
-import SearchForm from "../SearchForm/SearchForm";
+import Header from "components/Header/Header";
+import Main from "components/Main/Main";
+import SearchForm from "components/SearchForm/SearchForm";
 
 function HomePage() {
   return (

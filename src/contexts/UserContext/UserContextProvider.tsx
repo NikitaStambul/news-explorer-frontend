@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { UserContext, UserInfo } from "./UserContext";
-import authApi from "#/utils/authApi";
-import { SignInData, SignUpData } from "#/types/auth";
+import authApi from "utils/authApi";
+import { SignInData, SignUpData } from "types/auth";
 
 const UserProvider: React.FC<{ children: React.ReactNode }> = ({
   children,

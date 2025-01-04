@@ -1,10 +1,10 @@
-import { Navigate, Route, Routes } from "react-router-dom";
-import Footer from "../Footer/Footer";
-import ModalsRenderer from "../ModalsRenderer/ModalsRenderer";
 import { useContext } from "react";
-import { UserContext } from "#/contexts/UserContext/UserContext";
-import HomePage from "../HomePage/HomePage";
-import SavedNewsPage from "../SavedNewsPage/SavedNewsPage";
+import { Navigate, Route, Routes } from "react-router-dom";
+import { UserContext } from "contexts/UserContext/UserContext";
+import Footer from "components/Footer/Footer";
+import ModalsRenderer from "components/ModalsRenderer/ModalsRenderer";
+import HomePage from "components/HomePage/HomePage";
+import SavedNewsPage from "components/SavedNewsPage/SavedNewsPage";
 
 function App() {
   const { userInfo } = useContext(UserContext);

@@ -1,8 +1,8 @@
 import { useContext } from "react";
-import Header from "../Header/Header";
-import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
-import SavedNews from "../SavedNews/SavedNews";
-import { UserContext } from "#/contexts/UserContext/UserContext";
+import Header from "components/Header/Header";
+import ProtectedRoute from "components/ProtectedRoute/ProtectedRoute";
+import SavedNews from "components/SavedNews/SavedNews";
+import { UserContext } from "contexts/UserContext/UserContext";
 
 function SavedNewsPage() {
   const { userInfo } = useContext(UserContext);

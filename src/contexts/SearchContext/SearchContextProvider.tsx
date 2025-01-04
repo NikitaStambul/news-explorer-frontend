@@ -1,7 +1,7 @@
 import { useCallback, useState } from "react";
 import { SearchContext } from "./SearchContext";
-import { Article } from "#/types/newsapi";
-import newsApi from "#/utils/newsApi";
+import { Article } from "types/newsapi";
+import newsApi from "utils/newsApi";
 
 interface SearchContextState {
   articles: Article[] | null;

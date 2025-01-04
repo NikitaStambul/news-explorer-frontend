@@ -1,10 +1,10 @@
 import { useContext, useState } from "react";
-import NavigationLink from "../NavigationLink/NavigationLink";
-import BurgerMenu from "../BurgerMenu/BurgerMenu";
-import Icons from "../Icons";
-import OutlinedBtn from "../OutlinedBtn/OutlinedBtn";
-import { ModalContext } from "#/contexts/ModalContext/ModalContext";
-import { UserContext } from "#/contexts/UserContext/UserContext";
+import NavigationLink from "components/NavigationLink/NavigationLink";
+import BurgerMenu from "components/BurgerMenu/BurgerMenu";
+import Icons from "components/Icons";
+import OutlinedBtn from "components/OutlinedBtn/OutlinedBtn";
+import { ModalContext } from "contexts/ModalContext/ModalContext";
+import { UserContext } from "contexts/UserContext/UserContext";
 
 function Navigation() {
   const { userInfo, signOut } = useContext(UserContext);

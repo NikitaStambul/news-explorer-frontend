@@ -1,9 +1,9 @@
 import { useContext } from "react";
-import About from "../About/About";
-import SearchResults from "../SearchResults/SearchResults";
-import { SearchContext } from "#/contexts/SearchContext/SearchContext";
-import LoadingSection from "#/LoadingSection/LoadingSection";
-import NotFoundSection from "../NotFoundSection/NotFoundSection";
+import About from "components/About/About";
+import SearchResults from "components/SearchResults/SearchResults";
+import { SearchContext } from "contexts/SearchContext/SearchContext";
+import LoadingSection from "components/LoadingSection/LoadingSection";
+import NotFoundSection from "components/NotFoundSection/NotFoundSection";
 
 function Main() {
   const { articles, error, isLoading } = useContext(SearchContext);
@@ -13,7 +13,7 @@ function Main() {
       {articles && articles.length > 0 && !error && !isLoading && (
         <SearchResults articles={articles} />
       )}
-      {isLoading && <LoadingSection />}
+      {isLoading && <LoadingSection text="Searching for news..." />}
       {!isLoading && articles && articles.length == 0 && <NotFoundSection />}
       <About />
     </div>

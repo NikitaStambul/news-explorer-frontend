@@ -1,4 +1,4 @@
-import { Article } from "#/types/newsapi";
+import { Article } from "types/newsapi";
 import { createContext } from "react";
 
 interface SearchContextValue {

@@ -1,6 +1,6 @@
 import { FormEventHandler, useRef, useState } from "react";
 import BaseModal from "components/BaseModal/BaseModal";
-import { cn } from "#/utils/cn";
+import { cn } from "utils/cn";
 
 interface ModalWithFormProps {
   onClose: () => void;

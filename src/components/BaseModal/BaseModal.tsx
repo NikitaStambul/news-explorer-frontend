@@ -1,7 +1,7 @@
 import React, { useEffect, useState, MouseEvent } from "react";
 import { createPortal } from "react-dom";
-import Icons from "../Icons";
-import { cn } from "#/utils/cn";
+import Icons from "components/Icons";
+import { cn } from "utils/cn";
 
 interface BaseModalProps {
   onClose: () => void;
