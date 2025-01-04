@@ -1,4 +1,5 @@
 import Icons from "components/Icons";
+import { Link } from "react-router-dom";
 
 function Footer() {
   return (
@@ -8,9 +9,9 @@ function Footer() {
       </p>
       <div className="flex justify-between md:justify-stretch gap-x-10">
         <div className="flex flex-col md:flex-row gap-x-10 gap-y-12">
-          <a href="/" className="font-normal text-lg">
+          <Link to="/" className="font-normal text-lg">
             Home
-          </a>
+          </Link>
           <a href="/" className="font-normal text-lg">
             TripleTen
           </a>
