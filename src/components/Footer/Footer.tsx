@@ -24,8 +24,12 @@ function Footer() {
           </li>
         </ul>
         <div className="flex gap-6">
-          <Icons.github className="w-6 h-6" />
-          <Icons.facebook className="w-6 h-6" />
+          <a href="https://github.com" target="_blank">
+            <Icons.github className="w-6 h-6" />
+          </a>
+          <a href="https://facebook.com" target="_blank">
+            <Icons.facebook className="w-6 h-6" />
+          </a>
         </div>
       </nav>
     </footer>
