@@ -1,4 +1,5 @@
 import Icons from "components/Icons";
+import { Link } from "react-router-dom";
 
 function Footer() {
   return (
@@ -9,9 +10,9 @@ function Footer() {
       <nav className="flex justify-between md:justify-stretch gap-x-10">
         <ul className="flex flex-col md:flex-row gap-x-10 gap-y-12">
           <li>
-            <a href="/" className="font-normal text-lg" target="_blank">
+            <Link to="/" className="font-normal text-lg">
               Home
-            </a>
+            </Link>
           </li>
           <li>
             <a
