@@ -9,9 +9,9 @@ function About() {
         className="w-full md:w-[45%] rounded-full aspect-square object-center object-cover"
       />
       <div className="flex flex-col gap-4">
-        <h3 className="font-robotoSlab font-normal text-[40px] leading-[46px] line-clamp-1 md:mb-6">
+        <h2 className="font-robotoSlab font-normal text-[40px] leading-[46px] line-clamp-1 md:mb-6">
           About the author
-        </h3>
+        </h2>
         <p>
           This block describes the project author. Here you should indicate your
           name, what you do, and which development technologies you know.

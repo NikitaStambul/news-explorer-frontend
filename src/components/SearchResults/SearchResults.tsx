@@ -10,7 +10,7 @@ function SearchResults({ articles }: SearchResultsProps) {
   const [articlesShown, setArticlesShown] = useState(3);
 
   return (
-    <div className="bg-background">
+    <section className="bg-background">
       <div className="container py-8 md:py-10 xl:py-20 flex flex-col gap-5 md:gap-8 xl:gap-16 items-center">
         <h3 className="font-robotoSlab font-normal text-[30px] leading-[34px] text-start w-full">
           Search results
@@ -28,7 +28,7 @@ function SearchResults({ articles }: SearchResultsProps) {
           </button>
         )}
       </div>
-    </div>
+    </section>
   );
 }
 

@@ -18,9 +18,9 @@ function SearchForm() {
     >
       <div className="flex flex-col justify-between flex-1 md:max-w-[440px] xl:max-w-[680px] gap-12 xl:gap-20">
         <div className="flex flex-col gap-4 xl:gap-8">
-          <h3 className="font-robotoSlab text-4xl xl:text-6xl">
+          <h1 className="font-robotoSlab text-4xl xl:text-6xl">
             What's going on in the world?
-          </h3>
+          </h1>
           <p className="text-lg leading-6">
             Find the latest news on any topic and save them in your personal
             account.
@@ -37,7 +37,7 @@ function SearchForm() {
           />
           <button
             type="submit"
-            className="bg-button hover:bg-button-hover transition-colors duration-300 text-lg leading-6 py-4 px-4 lg:px-6 xl:py-5 md:w-40 xl:w-44 rounded-full md:right-0 md:absolute shadow-submit"
+            className="bg-button hover:bg-button-hover transition-colors duration-300 text-lg leading-6 py-4 px-4 lg:px-6 xl:py-5 md:w-40 xl:w-44 rounded-full md:right-0 md:absolute shadow-submit active:bg-button-active"
           >
             Search
           </button>

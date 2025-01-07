@@ -9,14 +9,14 @@ function Main() {
   const { articles, error, isLoading } = useContext(SearchContext);
 
   return (
-    <div className="flex-1">
+    <main className="flex-1">
       {articles && articles.length > 0 && !error && !isLoading && (
         <SearchResults articles={articles} />
       )}
       {isLoading && <LoadingSection text="Searching for news..." />}
       {!isLoading && articles && articles.length == 0 && <NotFoundSection />}
       <About />
-    </div>
+    </main>
   );
 }
 

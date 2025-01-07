@@ -42,7 +42,8 @@ function SignUpModal() {
           className="text-sm font-normal"
           type="button"
         >
-          or <span className="text-button">Sign In</span>
+          or{" "}
+          <span className="text-button hover:text-button-hover">Sign In</span>
         </button>
       }
     >

@@ -12,10 +12,10 @@ function SavedNewsHeader() {
       <p className="text-sm leading-6 opacity-50">Saved articles</p>
       {savedArticles && !isLoading && (
         <>
-          <h2 className="font-robotoSlab text-3xl max-w-[336px]">
+          <h1 className="font-robotoSlab text-3xl max-w-[336px]">
             {userInfo.user?.name}, you have {savedArticles?.length} saved
             articles
-          </h2>
+          </h1>
           <p className="text-lg leading-6">
             {savedArticles.length ? (
               <>

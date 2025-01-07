@@ -1,6 +1,6 @@
 import { createContext } from "react";
 
-export type ModalType = "SIGNIN" | "SIGNUP" | null;
+export type ModalType = "SIGNIN" | "SIGNUP" | "REGISTERATION_SUCCESS" | null;
 
 interface ModalContextValue {
   currentModal: ModalType;

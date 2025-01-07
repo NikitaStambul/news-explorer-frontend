@@ -55,6 +55,7 @@ export default {
         button: {
           DEFAULT: "#2F71E5",
           hover: "#347EFF",
+          active: "#2A65CC",
           disabled: "#E6E8EB",
           "secondary-hover": "#E8E8E8",
         },

@@ -41,7 +41,7 @@ function SignInModal() {
           className="text-sm font-normal"
           type="button"
         >
-          or <span className="text-button">Sign Up</span>
+          or <span className="text-button hover:text-button-hover">Sign Up</span>
         </button>
       }
     >
