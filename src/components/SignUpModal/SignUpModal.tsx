@@ -22,7 +22,7 @@ function SignUpModal() {
 
     try {
       await signUp(formData);
-      closeModal();
+      openModal("REGISTERATION_SUCCESS");
     } catch (err: unknown) {
       const error = err as Error;
       setFormError(error.message);
