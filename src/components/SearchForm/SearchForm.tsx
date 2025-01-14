@@ -1,9 +1,8 @@
 import { SearchContext } from "contexts/SearchContext/SearchContext";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 
 function SearchForm() {
-  const [query, setQuery] = useState("");
-  const { searchByQuery } = useContext(SearchContext);
+  const { searchByQuery, query, setQuery } = useContext(SearchContext);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

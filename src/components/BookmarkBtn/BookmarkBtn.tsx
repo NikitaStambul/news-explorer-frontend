@@ -1,20 +1,13 @@
 import { cn } from "utils/cn";
-import { ButtonHTMLAttributes, useState } from "react";
+import { ButtonHTMLAttributes } from "react";
 
-function BookmarkBtn({
-  className,
-  ...rest
-}: ButtonHTMLAttributes<HTMLButtonElement>) {
-  const [isBookmarked, setIsBookmarked] = useState(false);
+interface BookmarkBtnProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  isBookmarked: boolean;
+}
 
-  const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    e.preventDefault();
-    setIsBookmarked(!isBookmarked);
-  };
-
+function BookmarkBtn({ isBookmarked, className, ...rest }: BookmarkBtnProps) {
   return (
     <button
-      onClick={handleClick}
       className={cn("group", className)}
       aria-label="Toggle bookmark"
       {...rest}

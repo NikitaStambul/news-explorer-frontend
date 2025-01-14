@@ -1,10 +1,11 @@
 import { useCallback, useState } from "react";
 import { SearchContext } from "./SearchContext";
 import { Article } from "types/newsapi";
-import newsApi from "utils/newsApi";
+import articlesApi from "utils/articlesApi";
 
 interface SearchContextState {
   articles: Article[] | null;
+  query: string;
   isLoading: boolean;
   error: Error | null;
 }
@@ -14,15 +15,21 @@ const SearchContextProvider: React.FC<{ children: React.ReactNode }> = ({
 }) => {
   const [state, setState] = useState<SearchContextState>({
     articles: null,
+    query: "",
     isLoading: false,
     error: null,
   });
+
+  const setQuery = (query: string) => {
+    setState((state) => ({ ...state, query }));
+  };
 
   const searchByQuery = useCallback(async (query: string) => {
     setState((state) => ({ ...state, isLoading: true }));
 
     try {
-      const articles = await newsApi.getArticles(query);
+      const articles = await articlesApi.getArticles(query);
+
       setState((state) => ({
         ...state,
         articles: filterArticles(articles),
@@ -40,6 +47,8 @@ const SearchContextProvider: React.FC<{ children: React.ReactNode }> = ({
     <SearchContext.Provider
       value={{
         articles: state.articles,
+        query: state.query,
+        setQuery,
         isLoading: state.isLoading,
         error: state.error,
         searchByQuery,

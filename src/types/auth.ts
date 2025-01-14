@@ -1,11 +1,14 @@
+import { SavedArticle } from "./savedArticle";
+
 export interface User {
   _id: string;
   email: string;
-  name: string;
+  username: string;
+  bookmarked: SavedArticle[];
 }
 
 export interface SignUpData {
-  name: string;
+  username: string;
   email: string;
   password: string;
 }
@@ -16,7 +19,7 @@ export interface SignInData {
 }
 
 export interface EditProfileData {
-  name: string;
+  username: string;
   avatar: string;
 }
 

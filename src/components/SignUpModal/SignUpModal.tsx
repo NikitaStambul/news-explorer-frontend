@@ -13,7 +13,7 @@ function SignUpModal() {
     {
       email: "",
       password: "",
-      name: "",
+      username: "",
     }
   );
 
@@ -65,9 +65,9 @@ function SignUpModal() {
         minLength={6}
       />
       <FormInput
-        error={errors.name}
-        value={formData.name}
-        valueTitle="name"
+        error={errors.username}
+        value={formData.username}
+        valueTitle="username"
         onChange={handleInputChange}
         onBlur={handleBlur}
         required

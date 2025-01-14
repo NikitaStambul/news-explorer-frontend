@@ -1,5 +1,7 @@
 import { SignInData, SignUpData, User } from "types/auth";
 import { createContext } from "react";
+import { Article } from "types/newsapi";
+import { SaveResponse } from "utils/articlesApi";
 
 export interface UserInfo {
   user: User | null;
@@ -11,6 +13,8 @@ interface UserContextValue {
   signIn: (data: SignInData) => Promise<void>;
   signUp: (data: SignUpData) => Promise<void>;
   signOut: () => void;
+  saveArticle: (article: Article, keyword: string) => Promise<void>;
+  removeArticle: (url: string) => void;
 }
 
 export const UserContext = createContext<UserContextValue>({
@@ -21,4 +25,6 @@ export const UserContext = createContext<UserContextValue>({
   signIn: async () => {},
   signUp: async () => {},
   signOut: () => {},
+  saveArticle: async () => {},
+  removeArticle: () => {},
 });

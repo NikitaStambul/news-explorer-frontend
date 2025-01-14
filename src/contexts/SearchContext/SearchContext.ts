@@ -3,6 +3,8 @@ import { createContext } from "react";
 
 interface SearchContextValue {
   articles: Article[] | null;
+  query: string;
+  setQuery: (query: string) => void
   isLoading: boolean;
   error: Error | null;
   searchByQuery: (query: string) => void;
@@ -10,7 +12,9 @@ interface SearchContextValue {
 
 export const SearchContext = createContext<SearchContextValue>({
   articles: null,
-  searchByQuery: () => {},
+  query: "",
+  setQuery: () => {},
   error: null,
   isLoading: false,
+  searchByQuery: () => {},
 });

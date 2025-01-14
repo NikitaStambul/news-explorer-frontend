@@ -1,27 +1,26 @@
-import { SavedContext } from "contexts/SavedContext/SavedContext";
 import { UserContext } from "contexts/UserContext/UserContext";
 import { SavedArticle } from "types/savedArticle";
 import { useContext } from "react";
 
 function SavedNewsHeader() {
-  const { userInfo } = useContext(UserContext);
-  const { savedArticles, isLoading } = useContext(SavedContext);
+  const {
+    userInfo: { user, userIsLoading },
+  } = useContext(UserContext);
 
   return (
     <div className="container flex flex-col gap-4 xl:gap-8 py-2 md:py-6 xl:py-10">
       <p className="text-sm leading-6 opacity-50">Saved articles</p>
-      {savedArticles && !isLoading && (
+      {user?.bookmarked && !userIsLoading && (
         <>
           <h1 className="font-robotoSlab text-3xl max-w-[336px]">
-            {userInfo.user?.name}, you have {savedArticles?.length} saved
-            articles
+            {user?.username}, you have {user?.bookmarked?.length} saved articles
           </h1>
           <p className="text-lg leading-6">
-            {savedArticles.length ? (
+            {user?.bookmarked.length ? (
               <>
                 By keywords:
                 <span className="font-bold">
-                  {generateKeywordString(savedArticles)}
+                  {generateKeywordString(user?.bookmarked)}
                 </span>
               </>
             ) : (

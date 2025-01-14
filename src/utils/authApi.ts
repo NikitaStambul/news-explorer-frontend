@@ -26,11 +26,7 @@ class AuthApi extends BaseApi {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          ...data,
-          avatar:
-            "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png?20150327203541",
-        }),
+        body: JSON.stringify(data),
       });
       console.log(res);
     } catch (error: unknown) {

@@ -5,6 +5,7 @@ import { Article } from "types/newsapi";
 import { useContext } from "react";
 import { UserContext } from "contexts/UserContext/UserContext";
 import RemoveBtn from "components/RemoveBtn/RemoveBtn";
+import { SearchContext } from "contexts/SearchContext/SearchContext";
 
 interface NewsCardProps {
   article: Article;
@@ -12,7 +13,33 @@ interface NewsCardProps {
 }
 
 function NewsCard({ article, page = "SEARCH" }: NewsCardProps) {
-  const { userInfo } = useContext(UserContext);
+  const {
+    userInfo: { user },
+    removeArticle,
+    saveArticle,
+  } = useContext(UserContext);
+  const { query } = useContext(SearchContext);
+  const isBookmarked = Boolean(
+    user?.bookmarked.find((savedArticle) => article.url === savedArticle.url)
+  );
+
+  const toggleSaveArticle = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    e.preventDefault();
+    if (isBookmarked) {
+      removeArticle(article.url);
+    } else {
+      saveArticle(article, query);
+    }
+  };
+
+  const handleRemoveClick = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    e.preventDefault();
+    removeArticle(article.url);
+  };
 
   return (
     <a href={article.url} target="_blank">
@@ -45,10 +72,18 @@ function NewsCard({ article, page = "SEARCH" }: NewsCardProps) {
           <Tooltip
             className="absolute top-4 right-4"
             content={
-              userInfo.user ? "Save article" : "Sign in to save articles"
+              user
+                ? isBookmarked
+                  ? "Remove from saved"
+                  : "Save article"
+                : "Sign in to save articles"
             }
           >
-            <BookmarkBtn disabled={!userInfo.user} />
+            <BookmarkBtn
+              disabled={!user}
+              onClick={toggleSaveArticle}
+              isBookmarked={isBookmarked}
+            />
           </Tooltip>
         )}
         {page == "SAVED" && (
@@ -56,7 +91,7 @@ function NewsCard({ article, page = "SEARCH" }: NewsCardProps) {
             className="absolute top-4 right-4"
             content={"Remove article"}
           >
-            <RemoveBtn disabled={!userInfo.user} />
+            <RemoveBtn disabled={!user} onClick={handleRemoveClick} />
           </Tooltip>
         )}
       </li>

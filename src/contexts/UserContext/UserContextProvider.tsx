@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { UserContext, UserInfo } from "./UserContext";
 import authApi from "utils/authApi";
-import { SignInData, SignUpData } from "types/auth";
+import { SignInData, SignUpData, User } from "types/auth";
+import { Article } from "types/newsapi";
+import articlesApi from "utils/articlesApi";
 
 const UserProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
@@ -38,6 +40,35 @@ const UserProvider: React.FC<{ children: React.ReactNode }> = ({
     localStorage.removeItem("jwt");
   };
 
+  const saveArticle = async (article: Article, keyword: string) => {
+    const { article: savedArticle } = await articlesApi.saveArticle(
+      article,
+      keyword
+    );
+
+    if (article) {
+      setUserInfo((userInfo) => {
+        const user: User = JSON.parse(JSON.stringify(userInfo.user));
+        user.bookmarked.unshift(savedArticle);
+
+        return { ...userInfo, user };
+      });
+    }
+  };
+
+  const removeArticle = (url: string) => {
+    articlesApi.removeArticle(url);
+    setUserInfo((userInfo) => {
+      const user: User = JSON.parse(JSON.stringify(userInfo.user));
+      user.bookmarked = user.bookmarked.filter((article) => article.url != url);
+
+      return {
+        ...userInfo,
+        user,
+      };
+    });
+  };
+
   useEffect(() => {
     setLoading(true);
 
@@ -55,6 +86,8 @@ const UserProvider: React.FC<{ children: React.ReactNode }> = ({
         signIn,
         signUp,
         signOut,
+        saveArticle,
+        removeArticle,
       }}
     >
       {children}

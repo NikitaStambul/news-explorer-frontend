@@ -31,7 +31,7 @@ function Navigation() {
             className="ml-8 flex items-center gap-3"
             onClick={signOut}
           >
-            {userInfo.user.name}
+            {userInfo.user.username}
             <Icons.signOut className="w-6 h-6" />
           </OutlinedBtn>
         ) : (
