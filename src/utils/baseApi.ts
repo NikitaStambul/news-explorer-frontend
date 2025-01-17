@@ -2,7 +2,7 @@ class BaseApi {
   _baseUrl: string;
 
   constructor() {
-    this._baseUrl = import.meta.env.VITE_BACKEND_URL;
+    this._baseUrl = import.meta.env.VITE_BACKEND_URL || "http://localhost:3001";
   }
 
   private async _checkResponse<T>(res: Response): Promise<T> {
