@@ -1,7 +1,6 @@
 import { SignInData, SignUpData, User } from "types/auth";
 import { createContext } from "react";
 import { Article } from "types/newsapi";
-import { SaveResponse } from "utils/articlesApi";
 
 export interface UserInfo {
   user: User | null;

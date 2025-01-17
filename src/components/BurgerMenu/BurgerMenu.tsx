@@ -98,7 +98,7 @@ function BurgerMenu({ onClose }: BurgerMenuProps) {
               className="md:ml-8 flex justify-center items-center gap-3"
               onClick={signOut}
             >
-              {userInfo.user.name}
+              {userInfo.user.username}
               <Icons.signOut className="w-6 h-6" />
             </OutlinedBtn>
           ) : (
