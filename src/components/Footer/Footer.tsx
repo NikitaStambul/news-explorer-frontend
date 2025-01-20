@@ -25,11 +25,11 @@ function Footer() {
           </li>
         </ul>
         <div className="flex gap-6">
-          <a href="https://github.com" target="_blank">
+          <a href="https://github.com/NikitaStambul" target="_blank">
             <Icons.github className="w-6 h-6" />
           </a>
-          <a href="https://facebook.com" target="_blank">
-            <Icons.facebook className="w-6 h-6" />
+          <a href="https://www.linkedin.com/in/nik-stambul/" target="_blank">
+            <Icons.linkedin className="w-6 h-6" />
           </a>
         </div>
       </nav>

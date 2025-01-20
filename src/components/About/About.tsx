@@ -1,4 +1,4 @@
-import authorImg from "assets/about.jpeg";
+import authorImg from "assets/about.png";
 
 function About() {
   return (
@@ -6,19 +6,30 @@ function About() {
       <img
         src={authorImg}
         alt="Author photo"
-        className="w-full md:w-[45%] rounded-full aspect-square object-center object-cover"
+        className="w-full md:w-[25%] rounded-full aspect-square object-center object-cover"
       />
       <div className="flex flex-col gap-4">
         <h2 className="font-robotoSlab font-normal text-[40px] leading-[46px] line-clamp-1 md:mb-6">
           About the author
         </h2>
         <p>
-          This block describes the project author. Here you should indicate your
-          name, what you do, and which development technologies you know.
+          Aspiring Frontend Developer with experience in modern JavaScript
+          frameworks like React, Next.js, and Vue. My focus is on building
+          dynamic and responsive user interfaces using advanced styling tools
+          (Tailwind CSS, MUI, Vuetify) and state management libraries (Redux,
+          Zustand, Pinia).
         </p>
         <p>
-          You can also talk about your experience with TripleTen, what you
-          learned there, and how you can help potential customers.
+          I have a track record of writing clean, maintainable code, optimizing
+          application performance, and working seamlessly with REST and GraphQL
+          APIs. In previous projects, I successfully rewrote modules to enhance
+          application speed and set up efficient workflows for team
+          collaboration.
+        </p>
+        <p>
+          My goal is to craft functional and visually appealing solutions that
+          not only improve user experiences but also help businesses achieve
+          their objectives.
         </p>
       </div>
     </section>
