@@ -6,9 +6,10 @@ import { useContext } from "react";
 import { UserContext } from "contexts/UserContext/UserContext";
 import RemoveBtn from "components/RemoveBtn/RemoveBtn";
 import { SearchContext } from "contexts/SearchContext/SearchContext";
+import { SavedArticle } from "types/savedArticle";
 
 interface NewsCardProps {
-  article: Article;
+  article: Article | SavedArticle;
   page: "SEARCH" | "SAVED";
 }
 
@@ -68,6 +69,11 @@ function NewsCard({ article, page = "SEARCH" }: NewsCardProps) {
             {article.source.name}
           </p>
         </div>
+        {"keyword" in article && (
+          <span className="absolute top-4 left-4 flex items-center z-10 px-5 text-xs font-medium bg-background rounded-lg shadow-md h-10 w-max">
+            {article.keyword}
+          </span>
+        )}
         {page == "SEARCH" && (
           <Tooltip
             className="absolute top-4 right-4"
